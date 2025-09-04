@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Crear Producto{% endblock %}
+
+{% block content %}
+<h2> Crear Producto</h2>
+
+{% if messages %}
+    {% for message in messages %}
+    <div >
+        {{ message }}
+    </div>
+    {% endfor %}
+{% endif %}
+
+<form method="post" novalidate>
+    {% csrf_token%}
+    {{ form.non_field_errors }}
+
+    <div>
+        {{form.title.label_tag}} <br>
+        {{form.title}}
+        {{form.title.errors}}
+    </div>
+
+    <div>
+        {{form.price.label_tag}} <br>
+        {{form.price}}
+        {{form.price.errors}}
+    </div>
+
+    <div>
+        {{form.description.label_tag}} <br>
+        {{form.description}}
+        {{form.description.errors}}
+    </div>
+
+    <div>
+        {{form.categoryId.label_tag}} <br>
+        {{form.categoryId}}
+        {{form.categoryId.errors}}
+    </div>
+
+    <div>
+        {{form.image.label_tag}} <br>
+        {{form.image}}
+        {{form.image.errors}}
+    </div>
+    
+    <button type="submit">Crear</button>
+</form>
+
+<p><a href="{% url 'lista_productos' %}">Volver a la lista</a></p>
+{% endblock %}

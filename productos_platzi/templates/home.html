@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<div class="content-home">
+<div class="message-bienvenida" >
+    <img src="{% static 'img/logo-home.png' %}" alt="Platzi">
+    <h2>Bienvenido a la Run Lovers</h2>
+    <p>Entrena hoy<strong>Preocupate mañana</strong></p>
+    <p>Usa el menú superior para:</p>
+</div>
+
+    <ul>
+        
+        <li>📦 Ver todos los productos</li>
+        <li>➕ Crear un nuevo producto</li>
+    </ul>
+</div>
+{% endblock %}
