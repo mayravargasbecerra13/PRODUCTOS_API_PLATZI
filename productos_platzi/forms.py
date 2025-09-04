@@ -19,6 +19,4 @@ class ProductoForm(forms.Form):
         label="ID de categoría", 
         widget=forms.NumberInput(attrs={"placeholder": "1"}))
     
-    image = forms.URLField(
-        label="URL de la imagen",
-        widget=forms.URLInput(attrs={"placeholder": "https://..."}))
+    images = forms.URLField(label="URL de la imagen", required=False)

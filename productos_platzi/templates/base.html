@@ -17,8 +17,70 @@ body {
     display: flex;
     flex-direction: column;
 }
+.card-detalle {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
 
-/* ==== HEADER ==== */
+.card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-width: 900px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.detalle-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+    max-width: 900px;
+    margin: 2rem auto;
+}
+
+.detalle-imagen img {
+    max-width: 350px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0px 3px 8px rgba(0,0,0,0.1);
+}
+
+.detalle-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.detalle-info h2 {
+    font-size: 2rem;
+    color: #79083c;
+    margin-bottom: .5rem;
+}
+
+.detalle-info .precio {
+    font-size: 1.3rem;
+    color: #ec005e;
+    font-weight: bold;
+}
+
+.detalle-info .descripcion {
+    line-height: 1.5;
+    color: #333;
+}
+
+.detalle-info .categoria {
+    font-style: italic;
+    color: #666;
+}
+
 header {
     background: rgba(255, 255, 255, 0.9);
     padding: 15px 30px;
@@ -43,7 +105,7 @@ nav a:hover {
     color: #155724;
 }
 
-/* ==== MAIN ==== */
+
 main {
     flex: 1;
     padding: 30px;
@@ -51,16 +113,11 @@ main {
     flex-direction: column;
     align-items: center;
 }
-
-/* ==== FORMULARIOS ==== */
-form {
-    background: #fff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    max-width: 400px;
-    width: 100%;
+main h2{
+    color: white;
+    font-size: 33px;
 }
+
 label {
     display: block;
     margin-top: 10px;
@@ -80,20 +137,148 @@ input:focus, textarea:focus {
     border-color: #66a6ff;
     box-shadow: 0 0 5px rgba(102,166,255,0.6);
 }
-button {
-    margin-top: 15px;
-    width: 100%;
-    padding: 12px;
-    background: #66a6ff;
-    color: #fff;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+.btn-detalle {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #d6246e; /* verde */
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
     transition: background 0.3s ease;
 }
+
+.btn-detalle:hover {
+    background-color: #b881a4;
+}
+
+.detalle-botones {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.detalle-botones a,
+.detalle-botones button {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 90px; 
+    text-align: center;
+}
+
+
+.btn-editar {
+    background-color: #007bff;
+    color: white;
+}
+.btn-editar:hover {
+    background-color: #0056b3;
+}
+
+
+.btn-eliminar {
+    background-color: #dc3545;
+    color: white;
+}
+.btn-eliminar:hover {
+    background-color: #a71d2a;
+}
+
+
+.btn-volver {
+    background-color: #6c757d;
+    color: white;
+}
+.btn-volver:hover {
+    background-color: #565e64;
+}
+
+
+.form-eliminar {
+    display: inline;
+}
+    
+    .form-container {
+        background-color: #fff; 
+        padding: 30px; 
+        border-radius: 8px; 
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+        max-width: 500px; 
+        margin: 40px auto; /
+    }
+
+    
+    .form-container input[type="text"],
+    .form-container input[type="number"],
+    .form-container textarea,
+    .form-container select {
+        width: calc(100% - 20px); 
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box; 
+    }
+
+    
+    .form-container label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #333;
+    }
+
+   
+    .form-container .errorlist {
+        color: red;
+        margin-bottom: 10px;
+        list-style-type: none; 
+        padding: 0;
+    }
+
+
+    .form-container button[type="submit"] {
+        background-color: #bf2a74; 
+        padding: 10px 20px;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease; 
+    }
+
+    .form-container button[type="submit"]:hover {
+        background-color: #0056b3; 
+    }
+
+    
+    .form-container p a {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .form-container p a:hover {
+        text-decoration: underline;
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 30px;
+    }
 button:hover {
-    background: #4b8de8;
+    background: #910034;
 }
 
 /* ==== RESULTADOS Y PRODUCTOS ==== */
@@ -149,6 +334,9 @@ button:hover {
     background: #d1ecf1;
     color: #0c5460;
 }
+.id{
+    color: #080808;
+}
 
 /* ==== FOOTER ==== */
 footer {
@@ -182,6 +370,14 @@ footer {
                     {% endif %}">
                     {{ message }}
                 </div>
+
+                <div 
+        class="p-4 mb-4 rounded-lg shadow-md 
+        {% if message.tags == 'success' %} bg-green-100 border border-green-400 text-green-700 
+        {% elif message.tags == 'error' %} bg-red-100 border border-red-400 text-red-700 
+        {% else %} bg-gray-100 border border-gray-400 text-gray-700 {% endif %}">
+        {{ message }}
+        </div>
             {% endfor %}
         {% endif %}
 

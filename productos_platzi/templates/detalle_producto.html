@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Detalle del Producto{% endblock %}
+
+{% block content %}
+<div class="detalle-container">
+    <!-- Imagen -->
+    <div class="detalle-imagen">
+        <img src="{{ producto.images.0 }}" alt="{{ producto.title }}">
+    </div>
+
+    <!-- Información del producto -->
+    <div class="detalle-info">
+        <h2>{{ producto.title }}</h2>
+        <p class="id"><strong>ID Producto:</strong> ${{ producto.id }}</p>
+        <p class="precio"><strong>💲 Precio:</strong> ${{ producto.price }}</p>
+        <p class="descripcion"><strong>📌 Descripción:</strong> {{ producto.description }}</p>
+        <p class="categoria"><strong>📂 Categoría:</strong> {{ producto.category.name }}</p>
+        
+        <!-- Botones de acción -->
+        <div class="detalle-botones">
+    <a class="btn-editar" href="{% url 'update_producto' producto.id %}">✏️ Editar</a>
+
+    <form action="{% url 'delete_producto' producto.id %}" method="post" 
+        class="form-eliminar"
+        onsubmit="return confirm('¿Seguro que quieres eliminar este producto?')">
+        {% csrf_token %}
+        <button type="submit" class="btn-eliminar">🗑️ Eliminar</button>
+    </form>
+
+    <a class="btn-volver" href="{% url 'lista_productos' %}">⬅ Volver a la lista</a>
+</div>
+    </div>
+</div>
+{% endblock %}
