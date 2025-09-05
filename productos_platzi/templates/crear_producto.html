@@ -48,9 +48,10 @@
             {{form.image.errors}}
         </div>
 
-        <button type="submit">Crear</button>
+        <button class="btn-crear" type="submit">Crear</button>
+        <p><a href="{% url 'lista_productos' %}">Volver a la lista</a></p>
     </form>
 
-    <p><a href="{% url 'lista_productos' %}">Volver a la lista</a></p>
+    
 </div>
 {% endblock %}

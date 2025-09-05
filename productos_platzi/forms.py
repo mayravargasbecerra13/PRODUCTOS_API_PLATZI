@@ -19,4 +19,6 @@ class ProductoForm(forms.Form):
         label="ID de categoría", 
         widget=forms.NumberInput(attrs={"placeholder": "1"}))
     
-    images = forms.URLField(label="URL de la imagen", required=False)
+    image = forms.URLField(
+        label="URL de la imagen", 
+        required=False)

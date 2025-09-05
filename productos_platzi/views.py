@@ -71,8 +71,9 @@ def update_producto(request, producto_id):
         "price": producto["price"],
         "description": producto["description"],
         "categoryId": producto["category"]["id"],
-        "images": producto["images"][0] if producto["images"] else ""
+        "image": producto["images"][0] if producto.get("images") else ""
     })
+    
     if request.method == "POST":
         form = ProductoForm(request.POST)
         if form.is_valid():
@@ -82,16 +83,19 @@ def update_producto(request, producto_id):
                 "price": float(data["price"]),
                 "description": data["description"],
                 "categoryId": data["categoryId"],
-                "images": [data["images"]]
             }
+            if data.get("image"):  
+                update_data["images"] = [data["image"]]
+
             put_response = requests.put(f"{BASE_URL}/{producto_id}", json=update_data)
             
             if put_response.status_code == 200:
                 messages.success(request, f"Producto actualizado: {data['title']}")
                 return redirect("detalle_producto", producto_id=producto_id)
             else:
-                messages.error(request, "Error al actualizar el producto")
-    return render(request, "update_producto.html", {"form": form, "producto": producto})   
+                messages.error(request, f"Error al actualizar el producto: {put_response.text}")
+    
+    return render(request, "update_producto.html", {"form": form, "producto": producto})
 
 csrf_exempt
 

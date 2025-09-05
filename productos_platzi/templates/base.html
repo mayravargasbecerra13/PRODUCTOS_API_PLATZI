@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -80,7 +81,61 @@ body {
     font-style: italic;
     color: #666;
 }
+.escultura-home img{
+    width: 600px;
+    height: 600px;
+}
+.content-home {
+    display: flex;
+    flex-direction: row;  
+    justify-content: center; 
+    align-items: center;     
+    height: 70vh;           
+    gap: 2rem;               
+}
+.message-entrena{
+    font-size: 34px;
+}
+.message-menu {
+    margin-top: 2rem;
+    text-align: left;
+    background: #fff; /* fondo blanco sólido */
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    max-width: 350px;
+    color: #333; /* texto oscuro para contraste */
+    font-size: 1rem;
+    border-left: 6px solid #ff4081; /* borde rosa que combina con el fondo */
+}
 
+.message-menu p {
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    font-size: 21px;
+    color: #c2185b; /* tono vino (similar al fondo) */
+}
+
+.message-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.message-menu li {
+    margin: 0.6rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    transition: transform 0.2s ease, color 0.2s ease;
+    cursor: pointer;
+}
+
+.message-menu li:hover {
+    transform: translateX(5px);
+    color: #388e3c; /* verde brillante (como el corazón del logo) */
+}
 header {
     background: rgba(255, 255, 255, 0.9);
     padding: 15px 30px;
@@ -91,18 +146,29 @@ header {
 }
 header h1 {
     font-family: oswald-semibold;
-    font-size: 22px;
+    font-size: 23px;
     color: #080808;
+}
+.logo-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; 
+}
+
+.logo {
+    width: 50px;   
+    height: auto; 
 }
 nav a {
     margin: 0 10px;
     text-decoration: none;
     font-weight: bold;
-    color: #333;
+    color: #64243e;
     transition: color 0.3s ease;
+    font-size: 21px;
 }
 nav a:hover {
-    color: #155724;
+    color: #ed015f;
 }
 
 
@@ -114,7 +180,7 @@ main {
     align-items: center;
 }
 main h2{
-    color: white;
+    
     font-size: 33px;
 }
 
@@ -147,10 +213,42 @@ input:focus, textarea:focus {
     font-size: 14px;
     transition: background 0.3s ease;
 }
+.btn-edit{
+    background-color: #d6246e; 
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    padding: 20px;
+    padding: 10px;
+    margin-top: 16px;
+}
 
 .btn-detalle:hover {
     background-color: #b881a4;
+    
 }
+.btn-back{
+display: inline-block;
+    padding: 6px 12px;
+    margin: 4px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+    background: #dc3545; /* Rojo tipo cancelar */
+    border: 1px solid #dc3545;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-back:hover {
+    background: #b02a37;
+    transform: scale(1.05);
+}
+
 
 .detalle-botones {
     display: flex;
@@ -205,58 +303,66 @@ input:focus, textarea:focus {
     display: inline;
 }
     
-    .form-container {
-        background-color: #fff; 
+.form-container {
+    background-color: #fff; 
+    padding: 30px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+    max-width: 500px; 
+    margin: 40px auto; /
+}
+.form-card{
+    background-color: #fff; 
         padding: 30px; 
         border-radius: 8px; 
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
         max-width: 500px; 
         margin: 40px auto; /
-    }
+}
 
     
-    .form-container input[type="text"],
-    .form-container input[type="number"],
-    .form-container textarea,
-    .form-container select {
-        width: calc(100% - 20px); 
-        padding: 10px;
-        margin-bottom: 15px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        box-sizing: border-box; 
-    }
+.form-container input[type="text"],
+.form-container input[type="number"],
+.form-container textarea,
+.form-container select {
+    width: calc(100% - 20px); 
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; 
+}
 
     
-    .form-container label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
-        color: #333;
-    }
+.form-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
 
-   
-    .form-container .errorlist {
-        color: red;
-        margin-bottom: 10px;
-        list-style-type: none; 
-        padding: 0;
-    }
+.form-container .errorlist {
+    color: red;
+    margin-bottom: 10px;
+    list-style-type: none; 
+    padding: 0;
+}
 
 
-    .form-container button[type="submit"] {
-        background-color: #bf2a74; 
-        padding: 10px 20px;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-        transition: background-color 0.3s ease; 
-    }
+.form-container button[type="submit"] {
+    background-color: #bf2a74; 
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease; 
+    margin-top: 15px;
+}
 
     .form-container button[type="submit"]:hover {
-        background-color: #0056b3; 
+        background-color: #d98bba; 
     }
 
     
@@ -264,7 +370,7 @@ input:focus, textarea:focus {
         display: block;
         text-align: center;
         margin-top: 20px;
-        color: #007bff;
+        color: #ed015f;
         text-decoration: none;
     }
 
@@ -275,13 +381,22 @@ input:focus, textarea:focus {
     h2 {
         text-align: center;
         color: #333;
-        margin-bottom: 30px;
+        margin-bottom: 40px;
     }
 button:hover {
     background: #910034;
 }
+.product_disponible{
+    color: white;
+    font-size: 30px;
+}
+.home-bienvenido{
+    color: white;
+    font-size: 50px;
+}
 
-/* ==== RESULTADOS Y PRODUCTOS ==== */
+
+
 .productos-container {
     display: flex;
     flex-wrap: wrap;
@@ -305,7 +420,7 @@ button:hover {
 }
 .card h3 {
     margin-bottom: 10px;
-    color: #155724;
+    color: #64243e;
 }
 .card p {
     font-size: 14px;
@@ -352,7 +467,12 @@ footer {
 
 <body>
     <header>
-        <h1>🛍️ API PLATZI STORE</h1>
+        
+    <div class="logo-title">
+        <img src="{% static 'img/logo-store.png' %}" alt="Logo Store" class="logo">
+        <h1>API PLATZI STORE</h1>
+    </div>
+
         <nav>
             <a href="{% url 'home' %}">Inicio</a>
             <a href="{% url 'lista_productos' %}">Productos</a>
@@ -385,7 +505,7 @@ footer {
     </main>
 
     <footer>
-        <p>Desarrollado con ❤️ usando Django y la API de Platzi</p>
+        <p>❤️ Tu tienda digital hecha con Django y la API de Platzi.</p>
     </footer>
 </body>
 </html>
