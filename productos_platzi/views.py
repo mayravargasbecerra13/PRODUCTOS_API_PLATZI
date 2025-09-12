@@ -1,5 +1,6 @@
 import requests
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 from requests.exceptions import RequestException
@@ -26,6 +27,7 @@ def detalle_producto(request, producto_id):
         return redirect("lista_productos")
     return render(request, "detalle_producto.html", {"producto": productos})
 
+@login_required(login_url='accounts:login')
 def crear_producto(request):
     if request.method == "POST":
         form = ProductoForm(request.POST)
@@ -57,7 +59,8 @@ def crear_producto(request):
         form = ProductoForm()
         
     return render(request, "crear_producto.html", {"form": form})
-    
+
+@login_required(login_url='accounts:login')   
 def update_producto(request, producto_id):
     response = requests.get(f"{BASE_URL}/{producto_id}")
     if response.status_code != 200:
@@ -99,6 +102,7 @@ def update_producto(request, producto_id):
 
 csrf_exempt
 
+@login_required(login_url='accounts:login')
 def delete_producto(request, producto_id):
     if request.method == "POST":
         response = requests.delete(f"{BASE_URL}/{producto_id}")
