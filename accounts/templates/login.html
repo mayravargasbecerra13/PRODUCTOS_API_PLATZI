@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+{% block title %}Iniciar Sesión {% endblock%}
+
+{% block content %}
+    <div class="login-container">
+        <h2 class="login-title">Iniciar sesión</h2>
+        {% if messages %}
+        {% for message in messages %}
+            <div class="alert 
+                {% if message.tags == 'success' %}alert-success
+                {% elif message.tags == 'error' %}alert-error
+                {% else %}alert-info{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form class="form-login" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn-login" type="submit">Entrar</button>
+    </form>
+
+    <p class="login-link" class="text-cuenta">¿No tienes una cuenta? <a  href="{% url 'accounts:register' %}">Registrarse aquí</a></p>
+    </div>
+{% endblock %}

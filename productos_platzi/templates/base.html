@@ -466,6 +466,154 @@ footer {
     color: #333;
     box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
 }
+/* ==== Style Register ==== */
+.auth-container {
+    width: 467px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.auth-container h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.auth-container form p {
+    margin-bottom: 1rem;
+}
+
+.auth-container p {
+    text-align: center;
+    margin-top: 1rem;
+}
+.register-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #9c084a; /* tono fucsia */
+  margin-bottom: 1.5rem;
+}
+#register-form{
+    color: black;
+}
+.error-container{
+    color: black;
+}
+/* Contenedor principal del login register*/
+.btn-register {
+  display: inline-block;
+  width: 100%;
+  padding: 0.7rem;
+  background: linear-gradient(135deg, #d63384, #9c084a);
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin: 20px auto;
+}
+.btn-login:hover {
+  background: linear-gradient(135deg, #9c084a, #d63384);
+}
+
+/* Contenedor principal del login */
+.login-container {
+  max-width: 400px;
+  margin: 80px auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  height: 530px;
+  color: black;
+}
+
+.login-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #9c084a; /* tono fucsia */
+  margin-bottom: 1.5rem;
+}
+
+.form-login {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  height: 262px;
+  margin: 26px auto;
+}
+
+.form-control:focus {
+  border-color: #ff4081; /* fucsia */
+  box-shadow: 0 0 5px rgba(255, 64, 129, 0.4);
+  outline: none;
+}
+
+/* Botón */
+.btn-login {
+  display: inline-block;
+  width: 100%;
+  padding: 0.7rem;
+  background: linear-gradient(135deg, #d63384, #9c084a);
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin: 20px auto;
+}
+
+.btn-login:hover {
+  background: linear-gradient(135deg, #9c084a, #d63384);
+}
+.login-link {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #6b0035;
+}
+
+.login-link a {
+  color: #9c084a;
+  text-decoration: underline;
+}
+
+/* Link registro */
+.register-link {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #6b0035;
+}
+
+.register-link a {
+  color: #9c084a;
+  text-decoration: underline;
+}
+
+/* Alertas */
+.alert {
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.alert.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.alert.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
 </style>
 </head>
 
@@ -479,8 +627,16 @@ footer {
 
         <nav>
             <a href="{% url 'home' %}">Inicio</a>
+
+        {% if user.is_authenticated %}
             <a href="{% url 'lista_productos' %}">Productos</a>
             <a href="{% url 'crear_producto' %}">Crear Producto</a>
+            <a href="{% url 'accounts:logout' %}">Cerrar sesión</a>
+     
+        {% else %}
+            <a href="{% url 'accounts:login' %}">Iniciar sesión</a>
+            <a href="{% url 'accounts:register' %}">Registrarse</a>
+        {% endif %}
         </nav>
     </header>
 
@@ -495,8 +651,7 @@ footer {
                     {{ message }}
                 </div>
 
-                <div 
-        class="p-4 mb-4 rounded-lg shadow-md 
+        <div class="p-4 mb-4 rounded-lg shadow-md 
         {% if message.tags == 'success' %} bg-green-100 border border-green-400 text-green-700 
         {% elif message.tags == 'error' %} bg-red-100 border border-red-400 text-red-700 
         {% else %} bg-gray-100 border border-gray-400 text-gray-700 {% endif %}">
