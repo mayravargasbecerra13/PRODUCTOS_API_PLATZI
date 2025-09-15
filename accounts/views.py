@@ -269,15 +269,6 @@ def register_view(request):
                 if response.status_code == 201:
                     response_data = response.json()
 
-                    # Crear usuario localmente en Django
-                    User.objects.create_user(
-                        username=user_data["username"],
-                        email=user_data["email"],
-                        first_name=user_data["first_name"],
-                        last_name=user_data["last_name"],
-                        password=user_data["password"],
-                    )
-
                     messages.success(
                         request,
                         f"¡Registro exitoso! Bienvenido {user_data['first_name']}.",
